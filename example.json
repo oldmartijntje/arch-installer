@@ -1,31 +1,46 @@
 {
   "commands": [
     {
-      "package": "--needed git base-devel",
-      "sync": true
-    },
-    {
-      "git": "https://aur.archlinux.org/yay.git"
-    },
-    {
-      "exec-in": "yay",
-      "commands": [
+      "desc": "Set pacman as package_manager",
+      "command": "var",
+      "args": [
         {
-          "exec": "makepkg -si"
+          "key": "package_manager",
+          "value": "pacman"
         }
       ]
     },
     {
-      "var": [
+      "command": "package",
+      "argument": "--needed git base-devel",
+      "sync": true
+    },
+    {
+      "command": "git-clone",
+      "argument": "https://aur.archlinux.org/yay.git"
+    },
+    {
+      "command": "exec-in",
+      "argument": "yay",
+      "args": [
         {
-          "key": "package-manager",
+          "command": "exec",
+          "argument": "makepkg -si"
+        }
+      ]
+    },
+    {
+      "command": "var",
+      "args": [
+        {
+          "key": "package_manager",
           "value": "yay"
         }
       ]
     },
     {
-      "comment": "Install all system related packages (yay -Sy)",
-      "package": [
+      "command": "package",
+      "args": [
         "quickshell",
         "flatpak",
         "wl-clipboard",
@@ -58,11 +73,12 @@
       "exampleCommand": "sudo nano /etc/pacman.conf"
     },
     {
-      "exec": "sudo mkinitcpio -P"
+      "command": "exec",
+      "argument": "sudo mkinitcpio -P"
     },
     {
-      "comment": "Install all other packages (yay -S)",
-      "package": [
+      "command": "package",
+      "args": [
         "docker",
         "docker-compose",
         "lazygit",
@@ -81,14 +97,16 @@
       ]
     },
     {
-      "define": "flatpak",
-      "commands": [
+      "command": "define-custom",
+      "argument": "flatpak",
+      "args": [
         "flatpak install %s"
       ],
-      "allowList": true
+      "allowPlural": true
     },
     {
-      "flatpak": [
+      "command": "flatpak",
+      "args": [
         "flathub",
         "io.github.flattool.Warehouse",
         "app.zen_browser.zen",
@@ -102,17 +120,17 @@
       ]
     },
     {
-      "systemctl": "syncthing.service --user",
+      "command": "systemctl",
+      "argument": "syncthing.service --user",
       "enable": true,
       "start": true
     },
     {
-      "systemctl": "bluetooth.service",
-      "enable": true,
-      "start": true
-    },
-    {
-      "systemctl": "docker",
+      "command": "systemctl",
+      "args": [
+        "bluetooth.service",
+        "docker"
+      ],
       "enable": true,
       "start": true
     },
@@ -122,41 +140,51 @@
       "exampleCommand": "sudo cat /sys/module/nvidia_drm/parameters/modeset"
     },
     {
-      "exec-in": "~/",
-      "commands": [
+      "command": "exec-in",
+      "argument": "~/",
+      "args": [
         {
-          "exec": "mkdir Documents"
+          "command": "exec",
+          "argument": "mkdir Documents"
         },
         {
-          "exec": "mkdir Downloads"
+          "command": "exec",
+          "argument": "mkdir Downloads"
         },
         {
-          "exec": "mkdir Music"
+          "command": "exec",
+          "argument": "mkdir Music"
         },
         {
-          "exec": "mkdir Pictures"
+          "command": "exec",
+          "argument": "mkdir Pictures"
         },
         {
-          "exec": "mkdir Templates"
+          "command": "exec",
+          "argument": "mkdir Templates"
         },
         {
-          "exec": "mkdir Videos"
+          "command": "exec",
+          "argument": "mkdir Videos"
         }
       ]
     },
     {
-      "exec-in": "~/Documents",
-      "commands": [
+      "command": "exec-in",
+      "argument": "~/Documents",
+      "args": [
         {
           "git": "git@github.com:oldmartijntje/Articles.git"
         }
       ]
     },
     {
-      "exec-in": "~/Pictures",
-      "commands": [
+      "command": "exec-in",
+      "argument": "~/Pictures",
+      "args": [
         {
-          "exec": "mkdir Screenshots"
+          "command": "exec",
+          "argument": "mkdir Screenshots"
         }
       ]
     }
