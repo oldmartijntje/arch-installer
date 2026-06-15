@@ -1,5 +1,7 @@
 {
-  "commands": [
+  "command": "exec-in",
+  "argument": "./",
+  "args": [
     {
       "desc": "Set pacman as package_manager",
       "command": "var",
