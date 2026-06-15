@@ -115,6 +115,7 @@
         "com.spotify.Client",
         "com.stremio.Stremio",
         "org.pulseaudio.pavucontrol",
+        "im.riot.Riot",
         "md.obsidian.Obsidian"
       ]
     },
