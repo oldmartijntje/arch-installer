@@ -1,0 +1,7 @@
+﻿services:
+  archinstaller:
+    image: archinstaller
+    build:
+      context: .
+      dockerfile: Dockerfile
+
