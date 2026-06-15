@@ -1,4 +1,4 @@
-﻿namespace ArchInstaller;
+﻿namespace InstallScriptGenerator;
 
 class Program
 {
