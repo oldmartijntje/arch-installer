@@ -1,0 +1,164 @@
+{
+  "commands": [
+    {
+      "package": "--needed git base-devel",
+      "sync": true
+    },
+    {
+      "git": "https://aur.archlinux.org/yay.git"
+    },
+    {
+      "exec-in": "yay",
+      "commands": [
+        {
+          "exec": "makepkg -si"
+        }
+      ]
+    },
+    {
+      "var": [
+        {
+          "key": "package-manager",
+          "value": "yay"
+        }
+      ]
+    },
+    {
+      "comment": "Install all system related packages (yay -Sy)",
+      "package": [
+        "quickshell",
+        "flatpak",
+        "wl-clipboard",
+        "hyprpolkitagent",
+        "visual-studio-code-bin",
+        "firefox",
+        "hyprpaper",
+        "waybar",
+        "wl-clipboard",
+        "hyprlauncher",
+        "hyprlock",
+        "swappy",
+        "hyprsunset",
+        "rofi",
+        "cliphist",
+        "ttf-nerd-fonts-symbols",
+        "nvidia-open",
+        "blueman",
+        "bluez",
+        "bluez-utils",
+        "flameshot",
+        "xdg-desktop-portal",
+        "xdg-desktop-portal-hyprland"
+      ],
+      "sync": true
+    },
+    {
+      "manualStep": "include multilib",
+      "explenation": "Open /etc/pacman.conf and made sure `Include = /etc/pacman.conf.d/mirrorlist` isn't commented out ([multilib])",
+      "exampleCommand": "sudo nano /etc/pacman.conf"
+    },
+    {
+      "exec": "sudo mkinitcpio -P"
+    },
+    {
+      "comment": "Install all other packages (yay -S)",
+      "package": [
+        "docker",
+        "docker-compose",
+        "lazygit",
+        "lazydocker",
+        "libreoffice-still",
+        "npm",
+        "jetbrains-toolbox",
+        "ark",
+        "konsole",
+        "imageviewer",
+        "mupdf",
+        "syncthing",
+        "chromium",
+        "python-pip",
+        "steam"
+      ]
+    },
+    {
+      "define": "flatpak",
+      "commands": [
+        "flatpak install %s"
+      ],
+      "allowList": true
+    },
+    {
+      "flatpak": [
+        "flathub",
+        "io.github.flattool.Warehouse",
+        "app.zen_browser.zen",
+        "com.discordapp.Discord",
+        "com.github.IsmaelMartinez.teams_for_linux",
+        "com.github.tchx84.Flatseal",
+        "com.spotify.Client",
+        "com.stremio.Stremio",
+        "org.pulseaudio.pavucontrol",
+        "md.obsidian.Obsidian"
+      ]
+    },
+    {
+      "systemctl": "syncthing.service --user",
+      "enable": true,
+      "start": true
+    },
+    {
+      "systemctl": "bluetooth.service",
+      "enable": true,
+      "start": true
+    },
+    {
+      "systemctl": "docker",
+      "enable": true,
+      "start": true
+    },
+    {
+      "manualStep": "Check whether nvidia works",
+      "explenation": "Run the command, if it doesn't return an error it's good.",
+      "exampleCommand": "sudo cat /sys/module/nvidia_drm/parameters/modeset"
+    },
+    {
+      "exec-in": "~/",
+      "commands": [
+        {
+          "exec": "mkdir Documents"
+        },
+        {
+          "exec": "mkdir Downloads"
+        },
+        {
+          "exec": "mkdir Music"
+        },
+        {
+          "exec": "mkdir Pictures"
+        },
+        {
+          "exec": "mkdir Templates"
+        },
+        {
+          "exec": "mkdir Videos"
+        }
+      ]
+    },
+    {
+      "exec-in": "~/Documents",
+      "commands": [
+        {
+          "git": "git@github.com:oldmartijntje/Articles.git"
+        }
+      ]
+    },
+    {
+      "exec-in": "~/Pictures",
+      "commands": [
+        {
+          "exec": "mkdir Screenshots"
+        }
+      ]
+    }
+  ]
+}
