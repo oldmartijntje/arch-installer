@@ -68,9 +68,8 @@
       "sync": true
     },
     {
-      "manualStep": "include multilib",
-      "explenation": "Open /etc/pacman.conf and made sure `Include = /etc/pacman.conf.d/mirrorlist` isn't commented out ([multilib])",
-      "exampleCommand": "sudo nano /etc/pacman.conf"
+      "command": "exec",
+      "argument": "sudo sed -i 's/^#\\(\\[multilib\\]\\)$/\\1/; /^\\[multilib\\]$/,/^Include/s/^#Include/Include/' /etc/pacman.conf"
     },
     {
       "command": "exec",
@@ -133,11 +132,6 @@
       ],
       "enable": true,
       "start": true
-    },
-    {
-      "manualStep": "Check whether nvidia works",
-      "explenation": "Run the command, if it doesn't return an error it's good.",
-      "exampleCommand": "sudo cat /sys/module/nvidia_drm/parameters/modeset"
     },
     {
       "command": "exec-in",
