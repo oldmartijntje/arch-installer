@@ -7,6 +7,9 @@ public class Command
     public string Argument  { get; set; }
     private List<Command> _subCommands = [];
 
+    /**
+     * The actual command, this holds the data of a specific command that will be executed. THis does not do the execution of itself, it only holds the data.
+     */
     public Command(string type, string argument, Dictionary<string, string>? extraArguments, List<Command>? subCommands)
     {
         this.Type = type;
