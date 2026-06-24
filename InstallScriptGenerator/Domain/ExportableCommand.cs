@@ -1,4 +1,4 @@
-namespace InstallScriptGenerator.DataShareObjects;
+namespace InstallScriptGenerator.Domain;
 
 public class ExportableCommand
 {
