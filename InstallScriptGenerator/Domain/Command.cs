@@ -2,15 +2,15 @@ namespace InstallScriptGenerator.Domain;
 
 public class Command
 {
-    private string _type;
+    public string Type { get; set; }
     private Dictionary<string, string> _extraArguments = [];
-    private string _argument;
+    public string Argument  { get; set; }
     private List<Command> _subCommands = [];
 
     public Command(string type, string argument, Dictionary<string, string>? extraArguments, List<Command>? subCommands)
     {
-        this._type = type;
-        this._argument = argument;
+        this.Type = type;
+        this.Argument = argument;
         if (extraArguments != null)
         {
             this._extraArguments = extraArguments;
