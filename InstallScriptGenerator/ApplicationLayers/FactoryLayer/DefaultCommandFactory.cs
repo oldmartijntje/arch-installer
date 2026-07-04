@@ -4,7 +4,7 @@ using InstallScriptGenerator.ApplicationLayers.CommandLoaderLayer;
 
 namespace InstallScriptGenerator.ApplicationLayers.FactoryLayer;
 
-public class CommandFactory: ICommandFactory
+public class DefaultCommandFactory: ICommandFactory
 {
     /**
      * Gets the correct command exporter, hardcoded definition

@@ -12,7 +12,7 @@ class Program
         Console.WriteLine("Hello, World!");
         DataFactory dataFactory = new DataFactory(new DefaultDataStore());
         SystemFactory systemFactory = new SystemFactory();
-        ICommandFactory commandFactory = new CommandFactory();
+        ICommandFactory commandFactory = new DefaultCommandFactory();
         ICommandHandler commandHandler = new DefaultCommandHandler(commandFactory);
         IRunner defaultRunner = new DefaultRunner(systemFactory, commandFactory, commandHandler);
         defaultRunner.RunFlow();
