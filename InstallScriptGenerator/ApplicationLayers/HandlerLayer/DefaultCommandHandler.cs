@@ -6,10 +6,10 @@ namespace InstallScriptGenerator.ApplicationLayers.HandlerLayer;
 
 public class DefaultCommandHandler: ICommandHandler
 {
-    private readonly CommandFactory _commandFactory;
+    private readonly ICommandFactory _commandFactory;
     private readonly List<Command> _commands;
 
-    public DefaultCommandHandler(CommandFactory comFactory)
+    public DefaultCommandHandler(ICommandFactory comFactory)
     {
         this._commandFactory = comFactory;
         this._commands = this._commandFactory.GetCommandLoader().GetCommands();
