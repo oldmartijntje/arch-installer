@@ -2,59 +2,69 @@ namespace InstallScriptGenerator.Domain;
 
 public class Command
 {
-    public string Type { get; set; }
-    private Dictionary<string, string> _extraArguments = [];
-    public string Argument  { get; set; }
-    private List<Command> _subCommands = [];
+    public required string Type { get; set; }
+    public string? Argument { get; set; }
+    private string? Description { get; set; } = null;
+    private List<Command> _subCommands = new List<Command>();
+    private List<CommandField> _specificFields = new List<CommandField>();
+    private List<string> _orderedFields = new List<string>();
 
     /**
      * The actual command, this holds the data of a specific command that will be executed. THis does not do the execution of itself, it only holds the data.
      */
-    public Command(string type, string argument, Dictionary<string, string>? extraArguments, List<Command>? subCommands)
+    public Command(string type, string argument, List<CommandField>? specificFields, List<Command>? subCommands, List<string>? orderedFields)
     {
         this.Type = type;
         this.Argument = argument;
-        if (extraArguments != null)
+        if (specificFields != null)
         {
-            this._extraArguments = extraArguments;
+            this._specificFields = specificFields;
         }
-
         if (subCommands != null)
         {
             this._subCommands = subCommands;
         }
+        if (orderedFields != null)
+        {
+            this._orderedFields = orderedFields;
+        }
     }
 
     /**
-     * Simply getting the list of extra arguments
+     * Simply getting the list of extra _specificFields
      */
-    public Dictionary<string, string> GetExtraArguments()
+    public List<CommandField>? GetSpecificFields()
     {
-        return this._extraArguments;
+        return this._specificFields;
     }
     
     /**
-     * Simply getting a specific item from this._extraArguments
+     * Simply getting a specific item from this._specificFields
      */
-    public string? GetExtraArgumentByKey(string index)
+    public string? GetSpecificFieldByKey(string index)
     {
-        return this._extraArguments.GetValueOrDefault(index);
+        throw new NotImplementedException();
+        // return this._specificFields
     }
 
     /**
-     * Overwriting this._extraArguments 
+     * Overwriting this._specificFields 
      */
-    public void SetExtraArguments(Dictionary<string, string> extraArguments)
+    public void SetSpecificFields(List<CommandField> extraArguments)
     {
-        this._extraArguments = extraArguments;
+        this._specificFields = extraArguments;
     }
 
     /**
-     * Add new item to the extra arguments dict
+     * Add new item to the _specificFields dict
      */
-    public void AddExtraArgument(string key, string value)
+    public void AddSpecificField(string key, string value)
     {
-        this._extraArguments.Add(key, value);
+        this._specificFields.Add(new CommandField
+        {
+            Key = key,
+            Value = value
+        });
     }
     
     /**
@@ -81,7 +91,7 @@ public class Command
     /**
      * Overwriting this._SubCommands
      */
-    public void SetExtraArguments(List<Command> subCommands)
+    public void SetSubCommands(List<Command> subCommands)
     {
         this._subCommands = subCommands;
     }
@@ -89,9 +99,51 @@ public class Command
     /**
      * Add new item to the extra SubCommands
      */
-    public void AddExtraArgument(Command cmd)
+    public void AddSubCommand(Command cmd)
     {
         this._subCommands.Add(cmd);
     }
     
+    /**
+     * Simply getting the list of OrderedFields
+     */
+    public List<string> GetOrderedFields()
+    {
+        return this._orderedFields;
+    }
+    
+    /**
+     * Simply getting a specific item from _orderedFields
+     */
+    public string? GetOrderedFieldByIndex(int index)
+    {
+        if (index < 0 || index >= this._subCommands.Count)
+        {
+            return null;
+        }
+
+        return this._orderedFields[index];
+    }
+
+    /**
+     * Overwriting this._orderedFields
+     */
+    public void SetOrderedFields(List<string> fields)
+    {
+        this._orderedFields = fields;
+    }
+
+    /**
+     * Add new item to the extra _orderedFields
+     */
+    public void AddOrderedField(string field)
+    {
+        this._orderedFields.Add(field);
+    }
+
+    public class CommandField
+    {
+        public required string Key { get; set; }
+        public required string Value { get; set; }
+    }
 }

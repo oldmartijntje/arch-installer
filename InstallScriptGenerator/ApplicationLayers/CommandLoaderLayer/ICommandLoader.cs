@@ -10,6 +10,6 @@ public interface ICommandLoader
 
 public class CommandLoaderReceipt
 {
-    public List<Command> Commands { get; set; }
-    public List<CommandValidationRow> Receipts { get; set; }
+    public List<Command> Commands { get; set; } = new List<Command>();
+    public List<CommandValidationRow> Receipts { get; set; } = new List<CommandValidationRow>();
 }
