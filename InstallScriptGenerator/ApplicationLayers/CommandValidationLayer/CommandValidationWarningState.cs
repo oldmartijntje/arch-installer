@@ -2,12 +2,12 @@ namespace InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
 
 public class CommandValidationWarningState : ICommandValidationState
 {
-    public bool IsBlocking()
+    public static bool IsBlocking()
     {
         return false;
     }
 
-    public bool IsIgnorableInformation()
+    public static bool IsIgnorableInformation()
     {
         return false;
     }
