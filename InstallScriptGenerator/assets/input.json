@@ -1,230 +1,229 @@
-{
-  "command": "exec-in",
-  "argument": "./",
-  "subCommands": [
-    {
-      "desc": "Set pacman as package_manager",
-      "command": "var",
-      "subCommands": [
-        {
-          "key": "package_manager",
-          "value": "pacman"
-        }
-      ]
-    },
-    {
-      "command": "package",
-      "argument": "--needed git base-devel",
-      "specificFields": [
-        {
-          "key":"sync",
-          "value": "true"
-        }
-      ]
-    },
-    {
-      "command": "git-clone",
-      "argument": "https://aur.archlinux.org/yay.git"
-    },
-    {
-      "command": "exec-in",
-      "argument": "yay",
-      "subCommands": [
-        {
-          "command": "exec",
-          "argument": "makepkg -si"
-        }
-      ]
-    },
-    {
-      "command": "var",
-      "subCommands": [
-        {
-          "key": "package_manager",
-          "value": "yay"
-        }
-      ]
-    },
-    {
-      "command": "package",
-      "orderedFields": [
-        "quickshell",
-        "flatpak",
-        "wl-clipboard",
-        "hyprpolkitagent",
-        "visual-studio-code-bin",
-        "firefox",
-        "hyprpaper",
-        "waybar",
-        "wl-clipboard",
-        "hyprlauncher",
-        "hyprlock",
-        "swappy",
-        "hyprsunset",
-        "rofi",
-        "cliphist",
-        "ttf-nerd-fonts-symbols",
-        "nvidia-open",
-        "blueman",
-        "bluez",
-        "bluez-utils",
-        "flameshot",
-        "xdg-desktop-portal",
-        "xdg-desktop-portal-hyprland"
-      ],
-      "sync": true,
-      "specificFields": [
-        {
-          "key":"sync",
-          "value": "true"
-        }
-      ]
-    },
-    {
-      "command": "exec",
-      "argument": "sudo sed -i 's/^#\\(\\[multilib\\]\\)$/\\1/; /^\\[multilib\\]$/,/^Include/s/^#Include/Include/' /etc/pacman.conf"
-    },
-    {
-      "command": "exec",
-      "argument": "sudo mkinitcpio -P"
-    },
-    {
-      "command": "package",
-      "orderedFields": [
-        "docker",
-        "docker-compose",
-        "lazygit",
-        "lazydocker",
-        "libreoffice-still",
-        "npm",
-        "jetbrains-toolbox",
-        "ark",
-        "konsole",
-        "imageviewer",
-        "mupdf",
-        "syncthing",
-        "chromium",
-        "python-pip",
-        "steam"
-      ]
-    },
-    {
-      "command": "define-custom",
-      "argument": "flatpak",
-      "args": [
-        "flatpak install %s"
-      ],
-      "specificFields": [
-        {
-          "key":"allowPlural",
-          "value": "true"
-        }
-      ]
-    },
-    {
-      "command": "flatpak",
-      "orderedFields": [
-        "flathub",
-        "io.github.flattool.Warehouse",
-        "app.zen_browser.zen",
-        "com.discordapp.Discord",
-        "com.github.IsmaelMartinez.teams_for_linux",
-        "com.github.tchx84.Flatseal",
-        "com.spotify.Client",
-        "com.stremio.Stremio",
-        "org.pulseaudio.pavucontrol",
-        "im.riot.Riot",
-        "md.obsidian.Obsidian"
-      ]
-    },
-    {
-      "command": "systemctl",
-      "argument": "syncthing.service --user",
-      "specificFields": [
-        {
-          "key":"start",
-          "value": "true"
-        },
-        {
-          "key":"enable",
-          "value": "true"
-        }
-      ]
-    },
-    {
-      "command": "systemctl",
-      "orderedFields": [
-        "bluetooth.service",
-        "docker"
-      ],
-      "enable": true,
-      "start": true,
-      "specificFields": [
-        {
-          "key":"start",
-          "value": "true"
-        },
-        {
-          "key":"enable",
-          "value": "true"
-        }
-      ]
-    },
-    {
-      "command": "exec-in",
-      "argument": "~/",
-      "subCommands": [
-        {
-          "command": "exec",
-          "argument": "mkdir Documents"
-        },
-        {
-          "command": "exec",
-          "argument": "mkdir Downloads"
-        },
-        {
-          "command": "exec",
-          "argument": "mkdir Music"
-        },
-        {
-          "command": "exec",
-          "argument": "mkdir Pictures"
-        },
-        {
-          "command": "exec",
-          "argument": "mkdir Templates"
-        },
-        {
-          "command": "exec",
-          "argument": "mkdir Videos"
-        }
-      ]
-    },
-    {
-      "command": "exec-in",
-      "argument": "~/Documents",
-      "subCommands": [
-        {
-          "command": "git",
-          "argument": "clone",
-          "SpecificFields": [
-            {
-              "key":"repo",
-              "value": "git@github.com:oldmartijntje/Articles.git"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "command": "exec-in",
-      "argument": "~/Pictures",
-      "subCommands": [
-        {
-          "command": "exec",
-          "argument": "mkdir Screenshots"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "command": "exec-in",
+    "argument": "./",
+    "subCommands": [
+      {
+        "desc": "Set pacman as package_manager",
+        "command": "var",
+        "subCommands": [
+          {
+            "key": "package_manager",
+            "value": "pacman"
+          }
+        ]
+      },
+      {
+        "command": "package",
+        "argument": "--needed git base-devel",
+        "specificFields": [
+          {
+            "key":"sync",
+            "value": "true"
+          }
+        ]
+      },
+      {
+        "command": "git-clone",
+        "argument": "https://aur.archlinux.org/yay.git"
+      },
+      {
+        "command": "exec-in",
+        "argument": "yay",
+        "subCommands": [
+          {
+            "command": "exec",
+            "argument": "makepkg -si"
+          }
+        ]
+      },
+      {
+        "command": "var",
+        "subCommands": [
+          {
+            "key": "package_manager",
+            "value": "yay"
+          }
+        ]
+      },
+      {
+        "command": "package",
+        "orderedFields": [
+          "quickshell",
+          "flatpak",
+          "wl-clipboard",
+          "hyprpolkitagent",
+          "visual-studio-code-bin",
+          "firefox",
+          "hyprpaper",
+          "waybar",
+          "wl-clipboard",
+          "hyprlauncher",
+          "hyprlock",
+          "swappy",
+          "hyprsunset",
+          "rofi",
+          "cliphist",
+          "ttf-nerd-fonts-symbols",
+          "nvidia-open",
+          "blueman",
+          "bluez",
+          "bluez-utils",
+          "flameshot",
+          "xdg-desktop-portal",
+          "xdg-desktop-portal-hyprland"
+        ],
+        "specificFields": [
+          {
+            "key":"sync",
+            "value": "true"
+          }
+        ]
+      },
+      {
+        "command": "exec",
+        "argument": "sudo sed -i 's/^#\\(\\[multilib\\]\\)$/\\1/; /^\\[multilib\\]$/,/^Include/s/^#Include/Include/' /etc/pacman.conf"
+      },
+      {
+        "command": "exec",
+        "argument": "sudo mkinitcpio -P"
+      },
+      {
+        "command": "package",
+        "orderedFields": [
+          "docker",
+          "docker-compose",
+          "lazygit",
+          "lazydocker",
+          "libreoffice-still",
+          "npm",
+          "jetbrains-toolbox",
+          "ark",
+          "konsole",
+          "imageviewer",
+          "mupdf",
+          "syncthing",
+          "chromium",
+          "python-pip",
+          "steam"
+        ]
+      },
+      {
+        "command": "define-custom",
+        "argument": "flatpak",
+        "args": [
+          "flatpak install %s"
+        ],
+        "specificFields": [
+          {
+            "key":"allowPlural",
+            "value": "true"
+          }
+        ]
+      },
+      {
+        "command": "flatpak",
+        "orderedFields": [
+          "flathub",
+          "io.github.flattool.Warehouse",
+          "app.zen_browser.zen",
+          "com.discordapp.Discord",
+          "com.github.IsmaelMartinez.teams_for_linux",
+          "com.github.tchx84.Flatseal",
+          "com.spotify.Client",
+          "com.stremio.Stremio",
+          "org.pulseaudio.pavucontrol",
+          "im.riot.Riot",
+          "md.obsidian.Obsidian"
+        ]
+      },
+      {
+        "command": "systemctl",
+        "argument": "syncthing.service --user",
+        "specificFields": [
+          {
+            "key":"start",
+            "value": "true"
+          },
+          {
+            "key":"enable",
+            "value": "true"
+          }
+        ]
+      },
+      {
+        "command": "systemctl",
+        "orderedFields": [
+          "bluetooth.service",
+          "docker"
+        ],
+        "specificFields": [
+          {
+            "key":"start",
+            "value": "true"
+          },
+          {
+            "key":"enable",
+            "value": "true"
+          }
+        ]
+      },
+      {
+        "command": "exec-in",
+        "argument": "~/",
+        "subCommands": [
+          {
+            "command": "exec",
+            "argument": "mkdir Documents"
+          },
+          {
+            "command": "exec",
+            "argument": "mkdir Downloads"
+          },
+          {
+            "command": "exec",
+            "argument": "mkdir Music"
+          },
+          {
+            "command": "exec",
+            "argument": "mkdir Pictures"
+          },
+          {
+            "command": "exec",
+            "argument": "mkdir Templates"
+          },
+          {
+            "command": "exec",
+            "argument": "mkdir Videos"
+          }
+        ]
+      },
+      {
+        "command": "exec-in",
+        "argument": "~/Documents",
+        "subCommands": [
+          {
+            "command": "git",
+            "argument": "clone",
+            "SpecificFields": [
+              {
+                "key":"repo",
+                "value": "git@github.com:oldmartijntje/Articles.git"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "command": "exec-in",
+        "argument": "~/Pictures",
+        "subCommands": [
+          {
+            "command": "exec",
+            "argument": "mkdir Screenshots"
+          }
+        ]
+      }
+    ]
+  }
+]
