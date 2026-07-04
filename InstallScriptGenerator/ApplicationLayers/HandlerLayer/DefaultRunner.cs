@@ -3,12 +3,12 @@ using InstallScriptGenerator.ApplicationLayers.IncompleteRunExportLayer;
 
 namespace InstallScriptGenerator.ApplicationLayers.HandlerLayer;
 
-public class DefaultRunner(SystemFactory sysFactory, CommandFactory comFactory, CommandHandler handler)
+public class DefaultRunner(SystemFactory sysFactory, CommandFactory comFactory, ICommandHandler handler)
     : IRunner
 {
-    private SystemFactory _systemFactory = sysFactory;
-    private CommandFactory _commandFactory = comFactory;
-    private CommandHandler _handler = handler;
+    private readonly SystemFactory _systemFactory = sysFactory;
+    private readonly CommandFactory _commandFactory = comFactory;
+    private readonly ICommandHandler _handler = handler;
 
     public void RunFlow()
     {

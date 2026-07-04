@@ -2,7 +2,7 @@ using InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
 
 namespace InstallScriptGenerator.ApplicationLayers.HandlerLayer;
 
-public class CommandHandler
+public class CommandHandler: ICommandHandler
 {
     public List<CommandValidationReport> ValidateCommands()
     {

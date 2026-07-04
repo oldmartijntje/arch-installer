@@ -13,7 +13,7 @@ class Program
         DataFactory dataFactory = new DataFactory(new DefaultDataStore());
         SystemFactory systemFactory = new SystemFactory();
         CommandFactory commandFactory = new CommandFactory();
-        CommandHandler commandHandler = new CommandHandler();
+        ICommandHandler commandHandler = new CommandHandler();
         IRunner defaultRunner = new DefaultRunner(systemFactory, commandFactory, commandHandler);
         defaultRunner.RunFlow();
         Console.WriteLine("Bye, World!");
