@@ -1,4 +1,4 @@
-namespace InstallScriptGenerator.CommandLayers.CommandBuilderLayer;
+namespace InstallScriptGenerator.ApplicationLayers.CommandBuilderLayer;
 
 public interface ICommandBuilder
 {

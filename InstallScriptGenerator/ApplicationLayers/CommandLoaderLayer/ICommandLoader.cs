@@ -1,4 +1,4 @@
-namespace InstallScriptGenerator.CommandLayers.CommandLoaderLayer;
+namespace InstallScriptGenerator.ApplicationLayers.CommandLoaderLayer;
 
 public interface ICommandLoader
 {

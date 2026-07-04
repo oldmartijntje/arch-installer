@@ -1,4 +1,4 @@
-namespace InstallScriptGenerator.ApplicationLayers.IncompleteRunExportLayer;
+namespace InstallScriptGenerator.ApplicationLayers.FactoryLayer;
 
 public class SystemFactory
 {

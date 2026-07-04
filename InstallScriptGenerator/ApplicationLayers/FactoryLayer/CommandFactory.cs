@@ -1,6 +1,6 @@
-using InstallScriptGenerator.CommandLayers.CommandBuilderLayer;
-using InstallScriptGenerator.CommandLayers.CommandExporterLayer;
-using InstallScriptGenerator.CommandLayers.CommandLoaderLayer;
+using InstallScriptGenerator.ApplicationLayers.CommandBuilderLayer;
+using InstallScriptGenerator.ApplicationLayers.CommandExporterLayer;
+using InstallScriptGenerator.ApplicationLayers.CommandLoaderLayer;
 
 namespace InstallScriptGenerator.ApplicationLayers.FactoryLayer;
 
