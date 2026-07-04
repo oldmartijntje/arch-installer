@@ -1,3 +1,4 @@
+using InstallScriptGenerator.ApplicationLayers.CommandLoaderLayer;
 using InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
 using InstallScriptGenerator.ApplicationLayers.FactoryLayer;
 using InstallScriptGenerator.Domain;
@@ -8,11 +9,14 @@ public class DefaultCommandHandler: ICommandHandler
 {
     private readonly ICommandFactory _commandFactory;
     private readonly List<Command> _commands;
+    private readonly List<CommandValidationRow> _loadingReport;
 
     public DefaultCommandHandler(ICommandFactory comFactory)
     {
         this._commandFactory = comFactory;
-        this._commands = this._commandFactory.GetCommandLoader().GetCommands();
+        CommandLoaderReceipt receipt = this._commandFactory.GetCommandLoader().GetCommands();
+        this._commands = receipt.Commands;
+        this._loadingReport = receipt.Receipts;
     }
     public List<CommandValidationReport> ValidateCommands()
     {
@@ -22,6 +26,11 @@ public class DefaultCommandHandler: ICommandHandler
             report.Add(this._commandFactory.GetCommandBuilder(command.Type).ValidateCommand(command));
         }
         return report;
+    }
+
+    public List<CommandValidationRow> ValidateCorrectImport()
+    {
+        return this._loadingReport;
     }
 
     public void RunCommands()

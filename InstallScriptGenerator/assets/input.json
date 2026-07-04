@@ -1,11 +1,11 @@
 {
   "command": "exec-in",
   "argument": "./",
-  "args": [
+  "subCommands": [
     {
       "desc": "Set pacman as package_manager",
       "command": "var",
-      "args": [
+      "subCommands": [
         {
           "key": "package_manager",
           "value": "pacman"
@@ -15,7 +15,12 @@
     {
       "command": "package",
       "argument": "--needed git base-devel",
-      "sync": true
+      "specificFields": [
+        {
+          "key":"sync",
+          "value": "true"
+        }
+      ]
     },
     {
       "command": "git-clone",
@@ -24,7 +29,7 @@
     {
       "command": "exec-in",
       "argument": "yay",
-      "args": [
+      "subCommands": [
         {
           "command": "exec",
           "argument": "makepkg -si"
@@ -33,7 +38,7 @@
     },
     {
       "command": "var",
-      "args": [
+      "subCommands": [
         {
           "key": "package_manager",
           "value": "yay"
@@ -42,7 +47,7 @@
     },
     {
       "command": "package",
-      "args": [
+      "orderedFields": [
         "quickshell",
         "flatpak",
         "wl-clipboard",
@@ -67,7 +72,13 @@
         "xdg-desktop-portal",
         "xdg-desktop-portal-hyprland"
       ],
-      "sync": true
+      "sync": true,
+      "specificFields": [
+        {
+          "key":"sync",
+          "value": "true"
+        }
+      ]
     },
     {
       "command": "exec",
@@ -79,7 +90,7 @@
     },
     {
       "command": "package",
-      "args": [
+      "orderedFields": [
         "docker",
         "docker-compose",
         "lazygit",
@@ -103,11 +114,16 @@
       "args": [
         "flatpak install %s"
       ],
-      "allowPlural": true
+      "specificFields": [
+        {
+          "key":"allowPlural",
+          "value": "true"
+        }
+      ]
     },
     {
       "command": "flatpak",
-      "args": [
+      "orderedFields": [
         "flathub",
         "io.github.flattool.Warehouse",
         "app.zen_browser.zen",
@@ -124,22 +140,40 @@
     {
       "command": "systemctl",
       "argument": "syncthing.service --user",
-      "enable": true,
-      "start": true
+      "specificFields": [
+        {
+          "key":"start",
+          "value": "true"
+        },
+        {
+          "key":"enable",
+          "value": "true"
+        }
+      ]
     },
     {
       "command": "systemctl",
-      "args": [
+      "orderedFields": [
         "bluetooth.service",
         "docker"
       ],
       "enable": true,
-      "start": true
+      "start": true,
+      "specificFields": [
+        {
+          "key":"start",
+          "value": "true"
+        },
+        {
+          "key":"enable",
+          "value": "true"
+        }
+      ]
     },
     {
       "command": "exec-in",
       "argument": "~/",
-      "args": [
+      "subCommands": [
         {
           "command": "exec",
           "argument": "mkdir Documents"
@@ -169,16 +203,23 @@
     {
       "command": "exec-in",
       "argument": "~/Documents",
-      "args": [
+      "subCommands": [
         {
-          "git": "git@github.com:oldmartijntje/Articles.git"
+          "command": "git",
+          "argument": "clone",
+          "SpecificFields": [
+            {
+              "key":"repo",
+              "value": "git@github.com:oldmartijntje/Articles.git"
+            }
+          ]
         }
       ]
     },
     {
       "command": "exec-in",
       "argument": "~/Pictures",
-      "args": [
+      "subCommands": [
         {
           "command": "exec",
           "argument": "mkdir Screenshots"

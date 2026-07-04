@@ -6,12 +6,16 @@ namespace InstallScriptGenerator.ApplicationLayers.FactoryLayer;
 
 public class DefaultCommandFactory: ICommandFactory
 {
+    private readonly ICommandBuilder _packageCommandBuilder = new PackageCommandBuilder();
+    private readonly ICommandLoader _commandLoader = new JsonCommandLoader();
+    private readonly ICommandExporter _commandExporter = new TextCommandExporter();
+    
     /**
      * Gets the correct command exporter, hardcoded definition
      */
     public ICommandExporter GetCommandExporter()
     {
-        throw new NotImplementedException();
+        return this._commandExporter;
     }
 
     /**
@@ -19,7 +23,7 @@ public class DefaultCommandFactory: ICommandFactory
      */
     public ICommandLoader GetCommandLoader()
     {
-        throw new NotImplementedException();
+        return this._commandLoader;
     }
     
     /**
@@ -34,7 +38,7 @@ public class DefaultCommandFactory: ICommandFactory
             case "var":
                 throw new NotImplementedException();
             case "package":
-                throw new NotImplementedException();
+                return this._packageCommandBuilder;
             case "git-clone":
                 throw new NotImplementedException();
             case "exec":
