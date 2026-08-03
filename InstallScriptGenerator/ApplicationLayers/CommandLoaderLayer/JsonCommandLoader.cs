@@ -32,7 +32,7 @@ public class JsonCommandLoader: ICommandLoader
                 receipt.Receipts.Add(new CommandValidationRow($"{this._jsonFilePath} is parsed into null, something is invalid", new CommandValidationErrorState()));
                 return receipt;
             }
-            receipt.Commands = MapCommands(rootCommands);
+            receipt.Commands = this.MapCommands(rootCommands);
             return receipt;
         }
         catch (JsonException ex)
