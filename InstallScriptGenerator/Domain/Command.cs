@@ -2,7 +2,7 @@ namespace InstallScriptGenerator.Domain;
 
 public class Command
 {
-    public required string Type { get; set; }
+    public string Type { get; set; }
     public string? Argument { get; set; }
     private string? Description { get; set; } = null;
     private List<Command> _subCommands = new List<Command>();
@@ -12,7 +12,7 @@ public class Command
     /**
      * The actual command, this holds the data of a specific command that will be executed. THis does not do the execution of itself, it only holds the data.
      */
-    public Command(string type, string argument, List<CommandField>? specificFields, List<Command>? subCommands, List<string>? orderedFields)
+    public Command(string type, string? argument, List<CommandField>? specificFields, List<Command>? subCommands, List<string>? orderedFields)
     {
         this.Type = type;
         this.Argument = argument;
@@ -139,6 +139,14 @@ public class Command
     public void AddOrderedField(string field)
     {
         this._orderedFields.Add(field);
+    }
+
+    /**
+     * Duplicate the command, we do this before testing the commands, because the testing can possibly tamper with the commands and change the execution.
+     */
+    public Command GetCopy()
+    {
+        return new Command(this.Type, this.Argument, this._specificFields, this._subCommands, this._orderedFields);
     }
 
     public class CommandField

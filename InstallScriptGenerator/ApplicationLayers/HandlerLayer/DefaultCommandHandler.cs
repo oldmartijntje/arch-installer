@@ -44,6 +44,11 @@ public class DefaultCommandHandler: ICommandHandler
      */
     private List<Command> DuplicateCommandList()
     {
-        throw new NotImplementedException();
+        List<Command> newList = new List<Command>();
+        foreach (var cmd in this._commands)
+        {
+            newList.Add(cmd.GetCopy());
+        }
+        return newList;
     }
 }
