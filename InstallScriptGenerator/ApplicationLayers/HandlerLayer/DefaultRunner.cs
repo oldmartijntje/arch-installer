@@ -1,3 +1,4 @@
+using InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
 using InstallScriptGenerator.ApplicationLayers.FactoryLayer;
 
 namespace InstallScriptGenerator.ApplicationLayers.HandlerLayer;
@@ -12,7 +13,7 @@ public class DefaultRunner(SystemFactory sysFactory, ICommandFactory comFactory,
     public void RunFlow()
     {
         // validate a correct import
-        this._handler.ValidateCorrectImport();
+        List<CommandValidationRow> validationResults = this._handler.ValidateCorrectImport();
         throw new NotImplementedException(); // have to do something with the output of the above command
         // get all the commands
         this._handler.ValidateCommands();
