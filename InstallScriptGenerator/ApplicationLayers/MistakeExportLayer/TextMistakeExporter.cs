@@ -19,6 +19,7 @@ public class TextMistakeExporter: IMistakeExporter
     
     public void Export(List<CommandValidationReport> reports)
     {
+        string cache = this._currentText;
         foreach (var report in reports)
         {
             report.GetValidationRows().ForEach(row =>
@@ -27,17 +28,25 @@ public class TextMistakeExporter: IMistakeExporter
                 this._currentText += $"{status} found in command {report.GetCommandClone().Type}:\n{row.Text}\n\n";
             });
         }
-        this.ExportFile(ReportHandler.IsRunnableInCurrentState(reports));
+
+        if (cache != this._currentText)
+        {
+            this.ExportFile(ReportHandler.IsRunnableInCurrentState(reports));
+        }
     }
 
     public void Export(List<CommandValidationRow> reports)
     {
+        string cache = this._currentText;
         foreach (var report in reports)
         {
             string status = report.State.IsBlocking() ? "ERROR" : "WARNING";
             this._currentText += $"{status} whilst importing commands:\n{report.Text}\n\n";
         }
-        this.ExportFile(ReportHandler.IsRunnableInCurrentState(reports));
+        if (cache != this._currentText)
+        {
+            this.ExportFile(ReportHandler.IsRunnableInCurrentState(reports));
+        }
     }
     
     private void ExportFile(bool isRunnableInCurrentState)
