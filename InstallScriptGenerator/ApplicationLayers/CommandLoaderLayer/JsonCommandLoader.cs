@@ -38,12 +38,12 @@ public class JsonCommandLoader: ICommandLoader
         }
         catch (JsonException ex)
         {
-            receipt.Receipts.Add(new CommandValidationRow($"Failed to parse JSON command file: {ex}", new CommandValidationErrorState()));
+            receipt.Receipts.Add(new CommandValidationRow($"Failed to parse JSON command file: {ex.Message}", new CommandValidationErrorState()));
             return receipt;
         }
         catch (Exception ex)
         {
-            receipt.Receipts.Add(new CommandValidationRow($"Unexpected error loading commands: {ex}", new CommandValidationErrorState()));
+            receipt.Receipts.Add(new CommandValidationRow($"Unexpected error loading commands: {ex.Message}", new CommandValidationErrorState()));
             return receipt;
         }
     }
