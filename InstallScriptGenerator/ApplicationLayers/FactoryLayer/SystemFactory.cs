@@ -5,6 +5,7 @@ namespace InstallScriptGenerator.ApplicationLayers.FactoryLayer;
 public class SystemFactory
 {
     private readonly IMistakeExporter _mistakeExporter;
+    private readonly HealthTracker _healthTracker = new HealthTracker();
 
     public SystemFactory(IMistakeExporter mistakeExporter)
     {
@@ -13,5 +14,10 @@ public class SystemFactory
     public IMistakeExporter GetMistakeExporter()
     {
         return _mistakeExporter;
+    }
+
+    public HealthTracker GetHealthTracker()
+    {
+        return this._healthTracker;
     }
 }

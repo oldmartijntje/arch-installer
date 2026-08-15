@@ -14,6 +14,7 @@ class Program
         DataFactory dataFactory = new DataFactory(new DefaultDataStore());
         IMistakeExporter mistakeExporter = new TextMistakeExporter(true);
         SystemFactory systemFactory = new SystemFactory(mistakeExporter);
+        mistakeExporter.ProvideSystemFactory(systemFactory);
         ICommandFactory commandFactory = new DefaultCommandFactory();
         ICommandHandler commandHandler = new DefaultCommandHandler(commandFactory);
         IRunner defaultRunner = new DefaultRunner(systemFactory, commandFactory, commandHandler);

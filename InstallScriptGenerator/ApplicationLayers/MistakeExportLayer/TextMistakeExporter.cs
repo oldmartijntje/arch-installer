@@ -1,4 +1,5 @@
 using InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
+using InstallScriptGenerator.ApplicationLayers.FactoryLayer;
 using InstallScriptGenerator.ApplicationLayers.HandlerLayer;
 using InstallScriptGenerator.ApplicationLayers.helpers;
 using InstallScriptGenerator.ApplicationLayers.interfaces;
@@ -11,6 +12,7 @@ public class TextMistakeExporter: IMistakeExporter
     private const string ERROR_FILE_LOCATION = "errors.txt";
     private const string WARNING_FILE_LOCATION = "warning.txt";
     private bool _consolePrint = true;
+    private SystemFactory? _systemFactory;
 
     public TextMistakeExporter(bool concolePrint)
     {
@@ -48,14 +50,32 @@ public class TextMistakeExporter: IMistakeExporter
             this.ExportFile(ReportHandler.IsRunnableInCurrentState(reports));
         }
     }
-    
+
+    public void ProvideSystemFactory(SystemFactory systemFactory)
+    {
+        this._systemFactory = systemFactory;
+    }
+
     private void ExportFile(bool isRunnableInCurrentState)
     {
         string fileName = isRunnableInCurrentState ? WARNING_FILE_LOCATION : ERROR_FILE_LOCATION;
-        FileActionsHelper.CreateFile(fileName, _currentText, true);
+        var systemFactory = this._systemFactory;
+        string fileText;
+        if (systemFactory != null)
+        {
+            fileText = $"Program start time: {systemFactory.GetHealthTracker().StartTime}";
+        }
+        else
+        {
+            fileText = $"Program start time: UNKNOWN";
+        }
+
+        fileText += $"\nExport time: {DateTime.Now}\n{this._currentText}";
+
+        FileActionsHelper.CreateFile(fileName, fileText, true);
         if (_consolePrint)
         {
-            Console.WriteLine(_currentText);
+            Console.WriteLine(fileText);
         }
         Console.WriteLine($"Exported log to {fileName}");
     }
