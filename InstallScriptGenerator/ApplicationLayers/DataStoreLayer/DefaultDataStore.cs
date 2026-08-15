@@ -1,3 +1,5 @@
+using InstallScriptGenerator.ApplicationLayers.interfaces;
+
 namespace InstallScriptGenerator.ApplicationLayers.DataStoreLayer;
 
 public class DefaultDataStore : IDataStore

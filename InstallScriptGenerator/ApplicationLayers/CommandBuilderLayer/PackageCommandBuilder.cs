@@ -1,4 +1,5 @@
 using InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
+using InstallScriptGenerator.ApplicationLayers.interfaces;
 using InstallScriptGenerator.Domain;
 
 namespace InstallScriptGenerator.ApplicationLayers.CommandBuilderLayer;

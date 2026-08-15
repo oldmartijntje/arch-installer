@@ -1,4 +1,4 @@
-namespace InstallScriptGenerator.ApplicationLayers.MistakeExportLayer;
+namespace InstallScriptGenerator.ApplicationLayers.interfaces;
 
 public interface IMistakeExporter
 {

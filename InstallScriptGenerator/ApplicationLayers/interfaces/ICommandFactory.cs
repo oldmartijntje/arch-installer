@@ -1,8 +1,6 @@
-using InstallScriptGenerator.ApplicationLayers.CommandBuilderLayer;
-using InstallScriptGenerator.ApplicationLayers.CommandExporterLayer;
 using InstallScriptGenerator.ApplicationLayers.CommandLoaderLayer;
 
-namespace InstallScriptGenerator.ApplicationLayers.FactoryLayer;
+namespace InstallScriptGenerator.ApplicationLayers.interfaces;
 
 public interface ICommandFactory
 {

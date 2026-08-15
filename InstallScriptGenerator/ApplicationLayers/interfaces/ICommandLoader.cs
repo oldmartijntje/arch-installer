@@ -1,7 +1,7 @@
 using InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
 using InstallScriptGenerator.Domain;
 
-namespace InstallScriptGenerator.ApplicationLayers.CommandLoaderLayer;
+namespace InstallScriptGenerator.ApplicationLayers.interfaces;
 
 public interface ICommandLoader
 {

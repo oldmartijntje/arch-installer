@@ -1,4 +1,4 @@
-namespace InstallScriptGenerator.ApplicationLayers.DataStoreLayer;
+namespace InstallScriptGenerator.ApplicationLayers.interfaces;
 
 /**
  * The datastore's are used by the commandBuilders in order to share data between multiple fire's, or between commands.

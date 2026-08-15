@@ -1,4 +1,4 @@
-namespace InstallScriptGenerator.ApplicationLayers.HandlerLayer;
+namespace InstallScriptGenerator.ApplicationLayers.interfaces;
 
 /**
  * The class that calls all other needed methods.

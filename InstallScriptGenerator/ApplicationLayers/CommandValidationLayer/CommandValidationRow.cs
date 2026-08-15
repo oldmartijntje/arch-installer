@@ -1,3 +1,5 @@
+using InstallScriptGenerator.ApplicationLayers.interfaces;
+
 namespace InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
 
 public class CommandValidationRow(string text, ICommandValidationState state)

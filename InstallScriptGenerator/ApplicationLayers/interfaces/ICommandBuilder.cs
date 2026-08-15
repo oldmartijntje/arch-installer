@@ -1,7 +1,7 @@
 using InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
 using InstallScriptGenerator.Domain;
 
-namespace InstallScriptGenerator.ApplicationLayers.CommandBuilderLayer;
+namespace InstallScriptGenerator.ApplicationLayers.interfaces;
 
 public interface ICommandBuilder
 {

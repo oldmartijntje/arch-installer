@@ -1,6 +1,6 @@
 using InstallScriptGenerator.ApplicationLayers.CommandValidationLayer;
 
-namespace InstallScriptGenerator.ApplicationLayers.HandlerLayer;
+namespace InstallScriptGenerator.ApplicationLayers.interfaces;
 
 public interface ICommandHandler
 {

@@ -1,4 +1,4 @@
-namespace InstallScriptGenerator.ApplicationLayers.CommandExporterLayer;
+namespace InstallScriptGenerator.ApplicationLayers.interfaces;
 
 public interface ICommandExporter
 {
