@@ -19,6 +19,14 @@ public class CommandValidationReport(Command command)
     }
 
     /**
+     * Returns a clone of the command in question.
+     */
+    public Command GetCommandClone()
+    {
+        return this._validatedCommand.GetCopy();
+    }
+
+    /**
      * Get all validation rows, aka get all warnings and errors
      */
     public List<CommandValidationRow> GetValidationRows()

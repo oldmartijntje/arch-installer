@@ -5,5 +5,5 @@ namespace InstallScriptGenerator.ApplicationLayers.interfaces;
  */
 public interface IRunner
 {
-    public void RunFlow();
+    public bool RunFlow();
 }

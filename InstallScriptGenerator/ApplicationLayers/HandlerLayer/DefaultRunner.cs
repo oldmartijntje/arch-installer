@@ -11,20 +11,22 @@ public class DefaultRunner(SystemFactory sysFactory, ICommandFactory comFactory,
     private readonly ICommandFactory _commandFactory = comFactory;
     private readonly ICommandHandler _handler = handler;
 
-    public void RunFlow()
+    public bool RunFlow()
     {
         // validate a correct import
         List<CommandValidationRow> importValidationResults = this._handler.ValidateCorrectImport();
+        _systemFactory.GetMistakeExporter().Export(importValidationResults);
         if (!ReportHandler.IsRunnableInCurrentState(importValidationResults))
         {
-            throw new NotImplementedException(); // have to do something with the output of the above command
+            return false;
         }
         
         // get all the commands
         List<CommandValidationReport> commandValidationResults = this._handler.ValidateCommands();
+        _systemFactory.GetMistakeExporter().Export(commandValidationResults);
         if (!ReportHandler.IsRunnableInCurrentState(commandValidationResults))
         {
-            throw new NotImplementedException(); // have to do something with the output of the above command
+            return false;
         }
         this._handler.RunCommands();
         // export the result
