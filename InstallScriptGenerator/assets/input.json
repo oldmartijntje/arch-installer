@@ -106,7 +106,13 @@
           "syncthing",
           "chromium",
           "python-pip",
-          "steam"
+          "mpd",
+          "steam",
+          "audacity",
+          "android-tools",
+          "bun",
+          "hyprpicker",
+          "pacman-contrib"
         ]
       },
       {
@@ -135,7 +141,14 @@
           "com.stremio.Stremio",
           "org.pulseaudio.pavucontrol",
           "im.riot.Riot",
-          "md.obsidian.Obsidian"
+          "md.obsidian.Obsidian",
+          "org.gnome.gitlab.YaLTeR.VideoTrimmer",
+          "org.vinegarhq.Sober",
+          "org.prismlauncher.PrismLauncher",
+          "org.kde.kdenlive",
+          "com.hypixel.HytaleLauncher",
+          "com.github.tchx84.Flatseal",
+          "com.anydesk.Anydesk"
         ]
       },
       {
